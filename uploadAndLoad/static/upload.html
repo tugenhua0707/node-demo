@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>文件上传</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <!-- 使用form表单提交
+  <form action="http://localhost:3001/upload" method="post" enctype="multipart/form-data">
+    <div>
+      <input type="file" name="file">
+    </div>
+    <div>
+      <input type="submit" value="提交"/>
+    </div>
+  </form>
+  -->
+  <!--  上传单个文件
+  <div>
+    <input type="file" name="file" id="file">
+  </div>
+  <script type="text/javascript">
+    var file = document.getElementById('file');
+    const instance = axios.create({
+      withCredentials: true
+    });
+    file.onchange = function(e) {
+      var f1 = e.target.files[0];
+      var fdata = new FormData();
+      fdata.append('file', f1);
+      instance.post('http://localhost:3001/upload', fdata).then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      });
+    }
+  </script>
+  -->
+  <div>
+    <input type="file" name="file" id="file" multiple="multiple">
+  </div>
+  <script type="text/javascript">
+    var file = document.getElementById('file');
+    const instance = axios.create({
+      withCredentials: true
+    });
+    file.onchange = function(e) {
+      var files = e.target.files;
+      var fdata = new FormData();
+      if (files.length > 0) {
+        for (let i = 0; i < files.length; i++) {
+          const f1 = files[i];
+          fdata.append('file', f1);
+        }
+      }
+      instance.post('http://localhost:3001/upload', fdata).then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      });
+    }
+  </script>
+</body>
+</html>

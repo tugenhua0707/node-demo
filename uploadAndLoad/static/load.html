@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>文件下载演示</title>
+</head>
+<body>
+  
+  <div>
+    <button onclick="fileLoad()">文件下载</button>
+    <iframe name="iframeId" style="display:none"></iframe>
+  </div>
+  <script type="text/javascript">
+    function fileLoad() {
+      window.open('/fileload/Q4汇总.xlsx', 'iframeId');
+    }
+  </script>
+</body>
+</html>

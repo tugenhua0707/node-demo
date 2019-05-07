@@ -1,0 +1,10 @@
+/node_modules/**
+/dist/**
+/npm-debug.log
+.DS_Store
+*.sample
+Thumbs.db
+npm-debug.log
+log/
+/images/**
+index.md
